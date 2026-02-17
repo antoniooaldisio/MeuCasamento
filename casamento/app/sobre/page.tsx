@@ -7,11 +7,11 @@ export default function Sobre() {
     <section className="w-full py-20 px-4 md:px-8 bg-gray-50">
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center gap-3 mb-12">
-          <Heart className="w-8 h-8 text-rose-600" />
+          <Heart className="w-8 h-8 text-[var(--color-accent)]" />
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900">Sobre Nós</h1>
         </div>
         <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div className="bg-gradient-to-br from-rose-100 to-pink-100 h-96 rounded-lg flex items-center justify-center">
+          <div className="bg-gradient-to-br from-[var(--color-accent-soft)] to-[var(--color-accent-soft-2)] h-96 rounded-lg flex items-center justify-center">
             <p className="text-gray-500">Foto do casal aqui</p>
           </div>
           <div>

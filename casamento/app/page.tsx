@@ -2,15 +2,17 @@
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { slides } from '../lib/images';
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const slides = [
-    '/root/foto01.jpg',
-  ];
+  useEffect(() => {
+    console.log('Slides carregados:', slides.length, slides);
+  }, []);
 
   useEffect(() => {
+    if (slides.length === 0) return;
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
@@ -30,26 +32,32 @@ export default function Home() {
   };
 
   return (
-    <div className="w-full h-[calc(100vh-80px)] relative overflow-hidden bg-black">
+    <div className="w-full relative overflow-hidden bg-[var(--color-background)]">
       {/* Carousel */}
-      <div className="relative w-full h-full">
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute w-full h-full transition-opacity duration-1000 ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            <img
-              src={slide}
-              alt={`Foto ${index + 1}`}
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                e.currentTarget.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'%3E%3Crect fill='%23e0e7ff' width='1200' height='600'/%3E%3Ctext x='50%25' y='50%25' font-size='32' fill='%239333ea' text-anchor='middle' dominant-baseline='middle'%3EFoto ${index + 1}%3C/text%3E%3C/svg%3E`;
-              }}
-            />
+      <div className="relative w-full h-96 md:h-screen bg-white flex items-center justify-center">
+        {slides && slides.length > 0 ? (
+          slides.map((slide, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentSlide ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <img
+                src={slide}
+                alt={`Foto ${index + 1}`}
+                className="w-full h-full object-contain"
+                onError={(e) => {
+                  e.currentTarget.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'%3E%3Crect fill='%23e0e7ff' width='1200' height='600'/%3E%3Ctext x='50%25' y='50%25' font-size='32' fill='%239333ea' text-anchor='middle' dominant-baseline='middle'%3EFoto ${index + 1}%3C/text%3E%3C/svg%3E`;
+                }}
+              />
+            </div>
+          ))
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gray-200">
+            <p className="text-gray-600">Carregando imagens...</p>
           </div>
-        ))}
+        )}
       </div>
 
       {/* Previous Button */}

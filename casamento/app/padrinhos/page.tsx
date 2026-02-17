@@ -7,11 +7,11 @@ export default function Padrinhos() {
     <section className="w-full py-20 px-4 md:px-8 bg-white">
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center gap-3 mb-12">
-          <Users className="w-8 h-8 text-rose-600" />
+          <Users className="w-8 h-8 text-[var(--color-accent)]" />
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900">Padrinhos</h1>
         </div>
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-rose-50 p-8 rounded-lg">
+          <div className="bg-[var(--color-accent-soft)] p-8 rounded-lg">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Padrinhos da Noiva</h2>
             <div className="space-y-4">
               <div className="flex items-center gap-4">
@@ -25,7 +25,7 @@ export default function Padrinhos() {
               </div>
             </div>
           </div>
-          <div className="bg-pink-50 p-8 rounded-lg">
+          <div className="bg-[var(--color-accent-soft-2)] p-8 rounded-lg">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Padrinhos do Noivo</h2>
             <div className="space-y-4">
               <div className="flex items-center gap-4">
